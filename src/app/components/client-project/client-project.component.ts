@@ -1,12 +1,13 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientService } from '../../services/client.service';
-import { APIResponseModel, Employee } from '../../model/interface/role';
+import { APIResponseModel, ClientProject, Employee } from '../../model/interface/role';
 import { Client } from '../../model/class/Client';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-client-project',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, DatePipe],
   templateUrl: './client-project.component.html',
   styleUrl: './client-project.component.css'
 })
@@ -31,14 +32,25 @@ export class ClientProjectComponent implements OnInit{
   employeeList: Employee[] = [];
   clientList: Client[] = [];
 
+  firstName = signal("Angular 19");
+
+  projectList = signal<ClientProject[]>([]);
+
   ngOnInit(): void {
+    const name = this.firstName();
     this.getAllClient();
     this.getAllEmployee();
+    this.getAllClientProject();
   }
 
   getAllEmployee() {
     this.clientSrv.getAllEmployees().subscribe((res: APIResponseModel)=>{
       this.employeeList = res.data;
+    })
+  }
+  getAllClientProject() {
+    this.clientSrv.getAllClientProject().subscribe((res: APIResponseModel)=>{
+      this.projectList.set(res.data);
     })
   }
   getAllClient() {
@@ -57,6 +69,10 @@ export class ClientProjectComponent implements OnInit{
         alert(res.message);
       }
     });
+  }
+
+  changeFirstName() {
+    this.firstName.set("ReactJs")
   }
 }
 
