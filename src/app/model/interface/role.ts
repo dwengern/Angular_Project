@@ -14,7 +14,7 @@ export interface APIResponseModel {
   data: any
 }
 
-export interface Employee {
+export interface IEmployee {
   empName: string,
   empId: string,
   empCode: string,
@@ -23,7 +23,7 @@ export interface Employee {
   role: string
 }
 
-export interface ClientProject {
+export interface IClientProject {
   empName: string;
   empId: number;
   empCode: string;

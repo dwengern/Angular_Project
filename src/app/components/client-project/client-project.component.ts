@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientService } from '../../services/client.service';
-import { APIResponseModel, ClientProject, Employee } from '../../model/interface/role';
+import { APIResponseModel, IClientProject, IEmployee } from '../../model/interface/role';
 import { Client } from '../../model/class/Client';
 import { DatePipe } from '@angular/common';
 import { AlertComponent } from '../../reusableComponents/alert/alert.component';
@@ -30,12 +30,12 @@ export class ClientProjectComponent implements OnInit{
   })
 
   clientSrv = inject(ClientService);
-  employeeList: Employee[] = [];
+  employeeList: IEmployee[] = [];
   clientList: Client[] = [];
 
   firstName = signal("Angular 19");
 
-  projectList = signal<ClientProject[]>([]);
+  projectList = signal<IClientProject[]>([]);
 
   ngOnInit(): void {
     const name = this.firstName();

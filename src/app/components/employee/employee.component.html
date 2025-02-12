@@ -1,1 +1,123 @@
-<p>employee works!</p>
+<app-alert [alertType]="'Success'" [message]="'Hi from Client Project Page'"></app-alert>
+
+<div class="row">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header bg-success">
+        Client List - {{tableName()}}
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Sr No</th>
+                  <th>Employee Name</th>
+                  <th>Employee Code</th>
+                  <th>Employee Email</th>
+                  <th>Emp Role</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of employeeList; track $index) {
+                <tr>
+                  <td>{{$index+1}}</td>
+                  <td>{{item.empName}}</td>
+                  <td>{{item.empCode}}</td>
+                  <td>{{item.empEmailId}}</td>
+                  <td>{{item.roleId}}</td>
+                  <td>
+                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-danger">Delete</button>
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<div class="col-4">
+    <div class="card">
+      <div class="card-header bg-success">
+        New Client
+      </div>
+      <div class="card-body">
+        <form [formGroup]="projectForm">
+          <div class="row">
+            <div class="col-6">
+              <label for="">Employee Name</label>
+              <input type="text" formControlName="empName" class="form-control">
+              @if(projectForm.controls['empName'].touched) {
+              <div class="text-danger">
+                @if (projectForm.controls['empName'].errors?.['required']){
+                <span>This is Required.</span>
+                }
+                @if (projectForm.controls['empName'].errors?.['minlength']){
+                <span>Mininum of 4 characters.</span>
+                }
+              </div>
+              }
+            </div>
+            <div class="col-6">
+              <label for="">Employee ID</label>
+              <input type="text" formControlName="empId" class="form-control">
+            </div>
+            <div class="col-6">
+              <label for="">Employee Code</label>
+              <input type="text" formControlName="empCode" class="form-control">
+            </div>
+            <div class="col-6">
+              <label for="">Emp Contact No</label>
+              <input type="text" formControlName="empContactNo" class="form-control">
+            </div>
+            <div class="col-6">
+              <label for="">Emp Email</label>
+              <input type="text" formControlName="empEmailId" class="form-control">
+            </div>
+            <div class="col-6">
+              <label for="">Address</label>
+              <input type="text" formControlName="empAddress" class="form-control">
+            </div>
+            <div class="col-6">
+              <label for="">City</label>
+              <input type="text" formControlName="empCity" class="form-control">
+            </div>
+            <div class="col-6">
+              <label for="">State</label>
+              <input type="text" formControlName="empState" class="form-control">
+            </div>
+            <div class="col-6">
+              <label for="">Pincode</label>
+              <input type="text" formControlName="empPinCode" class="form-control">
+            </div>
+            <div class="col-6">
+              <label for="">Emp Username</label>
+              <input type="text" formControlName="userName" class="form-control">
+            </div>
+            <div class="col-6">
+              <label for="">Emp Password</label>
+              <input type="text" formControlName="password" class="form-control">
+            </div>
+            <div class="col-6">
+              <div class="row pt-2">
+                <div class="col-6 text-center">
+                  <button class="btn btn-success" [disabled]="projectForm.invalid" (click)="onSaveEmployee()">
+                    Submit
+                  </button>
+                </div>
+                <div class="col-6 text-center">
+                  <button class="btn btn-secondary">Reset</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>-->
+</div>

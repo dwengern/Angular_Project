@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { Client } from '../model/class/Client';
-import { APIResponseModel } from '../model/interface/role';
+import { APIResponseModel} from '../model/interface/role';
 import { Constant } from '../constant/Constant';
+import { Employee } from '../model/class/Employee';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class ClientService {
 
   getAllEmployees ():Observable<APIResponseModel> {
     return this.http.get<APIResponseModel>(environment.API_URL + Constant.API_METHOD.GET_ALL_EMP)
+  }
+
+  addEmployee (obj:Employee):Observable<APIResponseModel> {
+    return this.http.post<APIResponseModel>(environment.API_URL + Constant.API_METHOD.ADD_NEW_EMP, obj)
   }
 
   getAllClientProject ():Observable<APIResponseModel> {
