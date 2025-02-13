@@ -37,9 +37,9 @@ export class Employee {
     this.empState = "";
     this.empAddress = "";
     this.empPinCode = "";
+    this.empContactNo = "";
 
     this.empDesignationId = 0;
-    this.empContactNo = "N/A";
     this.empAltContactNo = "N/A";
     this.empPersonalEmailId = "N/A";
     this.empExpTotalYear = 0;

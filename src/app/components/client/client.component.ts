@@ -44,7 +44,7 @@ export class ClientComponent implements OnInit{
         this.loadClient();
         this.clientObj = new Client();
       } else {
-        alert(res.message);
+        console.error("Error creating client:", res.message);
       }
     })
   }
